@@ -8,8 +8,8 @@ sources = [
     'imgui_tables.cpp',
     'imgui_demo.cpp',
     'imgui_widgets.cpp',
-    'imgui_impl_glfw.cpp',
-    'imgui_impl_opengl3.cpp']
+    './backends/imgui_impl_glfw.cpp',
+    './backends/imgui_impl_opengl3.cpp']
 
 libImGUI = library('ImGUI', sources, include_directories : incdir)
 libImGUIDep = declare_dependency(link_with : libImGUI, include_directories : incdir)
