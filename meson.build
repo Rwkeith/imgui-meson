@@ -1,6 +1,11 @@
-project('Dear ImGUI', 'cpp')
+project('Dear ImGUI', 'cpp', default_options : ['default_library=static'])
 
 incdir = include_directories('./backends', '.')
+
+glfwLib = subproject('glfw').get_variable('glfw_dep')
+
+gl = dependency('gl')
+thread_dep = dependency('threads')
 
 sources = [
     'imgui.cpp',
@@ -11,5 +16,5 @@ sources = [
     './backends/imgui_impl_glfw.cpp',
     './backends/imgui_impl_opengl3.cpp']
 
-libImGUI = library('ImGUI', sources, include_directories : incdir)
+libImGUI = library('ImGUI', sources, include_directories : incdir, dependencies : [glfwLib, gl, thread_dep])
 libImGUIDep = declare_dependency(link_with : libImGUI, include_directories : incdir)
