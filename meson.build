@@ -2,6 +2,7 @@ project('Dear ImGUI', 'cpp', default_options : ['default_library=static'])
 
 imguiInc = include_directories('./backends', '.')
 
+subproject('glfw')
 glfwDep = dependency('glfw')
 gl = dependency('gl')
 threadDep = dependency('threads')
